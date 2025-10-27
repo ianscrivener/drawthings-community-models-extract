@@ -35,13 +35,19 @@ jobs:
           node-version: 24
       
       - name: Install npm dependencies
+        working-directory: /home/runner/work/drawthings-community-models-extract/app  
         run: |
-          cd /home/runner/work/drawthings-community-models-extract/app
-          pwd
-          ls
-          cd app
           npm install
 
-
+      - name: Run node.js app
+        working-directory: /home/runner/work/drawthings-community-models-extract/app
+        run: |
+          node app.js
+          
+      - name: Git commit back 2x data files
+        working-directory: /home/runner/work/drawthings-community-models-extract
+        run: |
+          ls 
+          git status
 
 

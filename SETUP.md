@@ -51,7 +51,6 @@ To enable the external repository to trigger updates in this repository:
 Create `.github/workflows/trigger-sync.yml` in the external repository:
 
 ```yaml
----
 name: Trigger Data Extract Sync
 
 on:

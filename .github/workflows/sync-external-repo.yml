@@ -41,12 +41,14 @@ jobs:
       - name: Run node.js app
         working-directory: /home/runner/work/drawthings-community-models-extract/app
         run: |
-          node app.js
+          # node app.js
+          ls
+          pwd
           
-      - name: Git commit back 2x data files
-        working-directory: /home/runner/work/drawthings-community-models-extract
-        run: |
-          ls 
-          git status
+      # - name: Git commit back 2x data files
+      #   working-directory: /home/runner/work/drawthings-community-models-extract
+      #   run: |
+      #     ls 
+      #     git status
 
 

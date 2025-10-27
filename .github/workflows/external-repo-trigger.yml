@@ -8,17 +8,17 @@ on:
 jobs:
   process-external-update:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Log external repository update
         run: |
           echo "External repository update received"
           echo "Event type: ${{ github.event.action }}"
           echo "Client payload: ${{ toJson(github.event.client_payload) }}"
-      
+
       - name: Process update
         run: |
           echo "Processing external repository update..."

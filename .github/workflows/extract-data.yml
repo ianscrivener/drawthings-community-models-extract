@@ -42,9 +42,11 @@ jobs:
           node app.js        
           
       - name: Git commit back 2x data files
-        working-directory: /home/runner/work/drawthings-community-models-extract/drawthings-community-models-extract/app
+        working-directory: /home/runner/work/drawthings-community-models-extract/drawthings-community-models-extract
         run: |
           ls 
-          git status
+          git add .
+          git commit -m "Automated data extract update $(date -u +"%Y-%m-%d %H:%M:%S UTC")" || echo "No changes to commit"
+          git push origin main
 
 

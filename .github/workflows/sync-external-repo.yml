@@ -36,7 +36,9 @@ jobs:
       
       - name: Install npm dependencies
         run: |
-          cd /home/runner/work/drawthings-community-models-extract/drawthings-community-models-extract/app
+          cd /home/runner/work/drawthings-community-models-extract/app
+          pwd
+          ls
           cd app
           npm install
 

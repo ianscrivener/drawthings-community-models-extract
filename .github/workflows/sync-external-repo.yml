@@ -25,7 +25,6 @@ jobs:
 
       - name: Clone external repository
         run: |
-          cd /home/runner/work/drawthings-community-models-extract/drawthings-community-models-extract
           git clone https://github.com/drawthingsai/community-models.git
           ls community-models  
 
@@ -37,7 +36,7 @@ jobs:
       - name: Install npm dependencies
         working-directory: /home/runner/work/drawthings-community-models-extract/app  
         run: |
-          npm install
+        npm install
 
       - name: Run node.js app
         working-directory: /home/runner/work/drawthings-community-models-extract/app

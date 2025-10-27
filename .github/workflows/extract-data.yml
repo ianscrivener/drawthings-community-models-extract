@@ -37,6 +37,8 @@ jobs:
         run: |
           ls
           pwd
+          cd main 
+          ls
 
 
 

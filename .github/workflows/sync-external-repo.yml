@@ -36,8 +36,10 @@ jobs:
       - name: Install npm dependencies
         working-directory: /home/runner/work/drawthings-community-models-extract/app  
         run: |
-          npm install
-
+          # npm install
+          ls
+          pwd
+          
       - name: Run node.js app
         working-directory: /home/runner/work/drawthings-community-models-extract/app
         run: |

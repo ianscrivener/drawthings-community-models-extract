@@ -1,5 +1,5 @@
 ---
-name: Sync External Repository
+name: Extract Data
 
 on:
   # Run on schedule (every 6 hours)
@@ -39,7 +39,7 @@ jobs:
           # npm install
           ls
           pwd
-          
+
       - name: Run node.js app
         working-directory: /home/runner/work/drawthings-community-models-extract/app
         run: |

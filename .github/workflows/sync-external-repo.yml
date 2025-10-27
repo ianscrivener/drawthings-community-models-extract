@@ -35,8 +35,10 @@ jobs:
       
       - name: Install npm dependencies
         run: |
-          cd app
-          npm install
+          ls
+          pwd
+          # cd app
+          # npm install
 
 
 

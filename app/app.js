@@ -1,17 +1,21 @@
 import fs                   from 'fs';
 import { DuckDBInstance }   from '@duckdb/node-api';
 import _                    from 'lodash';
-import { parse_json }       from './parse_fn.js';
+import { parse_json }       from './modules/parse_fn.js';
 
 
 // ####################################
-// 1. create an in memory DuckDB database
-// 2. recurse ['models', 'loras', 'controlnets', 'uncurated_models'], read data and add into DuckDB
-// 3. create a parquet file with all data
+// 1. create a DuckDB database (or an inmemory DuckDB database)
+// 2. recurse ../community-models ['models', 'loras', 'controlnets', 'uncurated_models'], read JSON data (metadata.json) and adds the data into DuckDB
+// 3. create a parquet file with all data - ../community-models-data.parquet 
+// 4. create a cvs file with all data - ../community-models-data.csv
 // ####################################
 
 let counter = 0;
 
+
+// ####################################
+// MAIN FUNCTION
 async function main() {
     try {
         // console.log('Creating DuckDB instance...');
@@ -20,7 +24,7 @@ async function main() {
         const instance = await DuckDBInstance.create('ckpt.duckdb');
         const connection = await instance.connect();
 
-        // create db
+        // 1. create db
         await connection.run(`
             DROP SEQUENCE IF EXISTS user_id_seq;
             DROP TABLE IF EXISTS ckpt;
@@ -41,12 +45,10 @@ async function main() {
         `);   
 
 
-
-
         // 2. recurse ['models', 'loras', 'controlnets', 'uncurated_models'], read data and add into DuckDB
         const categories = ['models', 'loras', 'controlnets', 'uncurated_models'];
         for (const category of categories) {
-            const dirPath = `../${category}`;
+            const dirPath = `../community-models/${category}`;
             const sub_dirs = fs.readdirSync(dirPath);
             for (const dir of sub_dirs) {
 
@@ -84,34 +86,38 @@ async function main() {
         // 6. create a parquet file with all data
         console.log('Creating parquet file ckpt.duckdb.parquet ...');
         await connection.run(`
-            COPY ckpt TO 'ckpt.duckdb.parquet' (FORMAT PARQUET);
+            COPY ckpt TO '../community-models.parquet' (FORMAT PARQUET);
         `);
 
-        // close connection
+        // 7. create a csv file with all data
+        console.log('Creating parquet file ckpt.duckdb.parquet ...');
+        await connection.run(`
+            COPY ckpt TO '../community-models.csv' (HEADER, DELIMITER ',');
+        `);
+        
+
+        // 8. close DuckDB connection
         await connection.closeSync();
         console.log('Close DuckDB Connection.');
 
-        // get file size of DuckDB file
-        let stats = fs.statSync('ckpt.duckdb');
+        // 9. get file size of parquet file
+        let stats = fs.statSync('../community-models.parquet');
         let fileSizeInBytes = stats.size;
-        let fileSizeInMB = (fileSizeInBytes / (1024*1024)).toFixed(2);
-        console.log(`DuckDB file size: ${fileSizeInMB} megabytes`);
-
-        // get file size of parquet file
-        stats = fs.statSync('ckpt.duckdb.parquet');
-        fileSizeInBytes = stats.size;
-        fileSizeInMB = (fileSizeInBytes / (1024)).toFixed(2);
+        let fileSizeInMB = (fileSizeInBytes / (1024)).toFixed(2);
         console.log(`Parquet file size: ${fileSizeInMB} kilobytes`);
 
-     
+        // 10. get file size of csv file
+        stats = fs.statSync('../community-models.csv');
+        fileSizeInBytes = stats.size;
+        fileSizeInMB = (fileSizeInBytes / (1024)).toFixed(2);
+        console.log(`CSV file size: ${fileSizeInMB} kilobytes`);
+        
+
     }
     
     catch (error) { 
         console.error('Error:', error);
-    }
-
-
-    
+    }   
 
 }
 main();

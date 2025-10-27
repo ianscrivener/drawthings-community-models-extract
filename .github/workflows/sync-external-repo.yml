@@ -19,23 +19,25 @@ jobs:
 
     steps:
       - name: Checkout this repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+        with:
+          path: main
 
       - name: Clone external repository
         run: |
           git clone https://github.com/drawthingsai/community-models.git
           ls community-models  
 
+      - name: Install node.js
+        uses: actions/setup-node@v6
+        with: 
+          node-version: 24
+      
+      - name: Install npm dependencies
+        run: |
+          cd app
+          npm install
 
-      # - name: Commit and push changes
-      #   run: |
-      #     git config --local \
-      #       user.email "github-actions[bot]@users.noreply.github.com"
-      #     git config --local user.name "github-actions[bot]"
-      #     git add -A
-      #     if ! git diff --staged --quiet; then
-      #       git commit -m "Update data extracts from external repository"
-      #       git push
-      #     else
-      #       echo "No changes to commit"
-      #     fi
+
+
+

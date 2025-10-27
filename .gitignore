@@ -1,5 +1,9 @@
 node_modules
+app/node_modules
+.env
+community-models
 .gitignore
+
 
 # Logs
 logs
@@ -147,3 +151,4 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 README2.md
+app/ckpt.duckdb

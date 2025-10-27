@@ -23,9 +23,9 @@ jobs:
 
       - name: Clone external repository
         run: |
-          git clone \
-            https://github.com/drawthingsai/community-models.git
-            external-repo
+          git clone https://github.com/drawthingsai/community-models.git
+          ls community-models  
+
 
       # - name: Commit and push changes
       #   run: |

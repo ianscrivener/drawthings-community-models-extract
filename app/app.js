@@ -84,13 +84,13 @@ async function main() {
         console.log("Total files processed:", counter);
         
         // 6. create a parquet file with all data
-        console.log('Creating parquet file ckpt.duckdb.parquet ...');
+        console.log('Creating parquet file community-models.parquet ...');
         await connection.run(`
             COPY ckpt TO '../community-models.parquet' (FORMAT PARQUET);
         `);
 
         // 7. create a csv file with all data
-        console.log('Creating parquet file ckpt.duckdb.parquet ...');
+        console.log('Creating CSV file community-models.csv ...');
         await connection.run(`
             COPY ckpt TO '../community-models.csv' (HEADER, DELIMITER ',');
         `);

@@ -32,11 +32,11 @@ jobs:
         uses: actions/setup-node@v6
         with: 
           node-version: 24
-      
+
       - name: Install npm dependencies
         working-directory: /home/runner/work/drawthings-community-models-extract/app  
         run: |
-        npm install
+          npm install
 
       - name: Run node.js app
         working-directory: /home/runner/work/drawthings-community-models-extract/app

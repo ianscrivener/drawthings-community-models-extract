@@ -44,7 +44,8 @@ jobs:
       - name: Git commit back 2x data files
         working-directory: /home/runner/work/drawthings-community-models-extract/drawthings-community-models-extract
         run: |
-          ls 
+          ls
+          rm -rf community-models 
           git config --global user.email "163229+ianscrivener@users.noreply.github.com "
           git config --global user.name "Github Actions Bot"
           git add .

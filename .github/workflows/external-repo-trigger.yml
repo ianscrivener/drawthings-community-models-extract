@@ -1,0 +1,32 @@
+name: External Repository Trigger
+
+# This workflow is triggered when an external repository sends a repository_dispatch event
+on:
+  repository_dispatch:
+    types: [external-repo-updated]
+
+jobs:
+  process-external-update:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log external repository update
+        run: |
+          echo "External repository update received"
+          echo "Event type: ${{ github.event.action }}"
+          echo "Client payload: ${{ toJson(github.event.client_payload) }}"
+
+      - name: Process update
+        run: |
+          echo "Processing external repository update..."
+          # Add your processing logic here
+          # For example:
+          # - Extract data from the external repository
+          # - Generate parquet and csv files
+          # - Commit and push changes

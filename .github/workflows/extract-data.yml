@@ -23,8 +23,8 @@ jobs:
         run: |
           git clone https://github.com/drawthingsai/community-models.git
           ls community-models
-          rm community-models.parquet
-          rm community-models.csv
+          rm community-models.*
+          
 
       - name: Install node.js
         uses: actions/setup-node@v6

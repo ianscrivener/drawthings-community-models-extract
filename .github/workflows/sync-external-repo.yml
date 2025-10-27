@@ -9,9 +9,6 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
-  # Trigger when external repository changes (via repository_dispatch)
-  repository_dispatch:
-    types: [external-repo-updated]
 
 jobs:
   sync:

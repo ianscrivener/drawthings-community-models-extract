@@ -5,7 +5,7 @@ import { parse_json }       from './modules/parse_fn.js';
 
 
 // ####################################
-// 1. create a DuckDB database (or an inmemory DuckDB database)
+// 1. create a DuckDB database (or an in memory DuckDB database)
 // 2. recurse ../community-models ['models', 'loras', 'controlnets', 'uncurated_models'], read JSON data (metadata.json) and adds the data into DuckDB
 // 3. create a parquet file with all data - ../community-models-data.parquet 
 // 4. create a cvs file with all data - ../community-models-data.csv

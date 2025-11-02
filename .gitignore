@@ -6,7 +6,8 @@ community-models/
 community-models.csv
 community-models.parquet
 
-
+.DS_Store
+Thumbs.db
 
 # Logs
 logs

@@ -10,45 +10,37 @@ We also provide some examples how to query the parquet file locally or remotely.
 
 ---
 
-### Code Samples
-
-#### Query remote parquet file on S3 - javascript
+### Code Sample
 
 
-
-#### Query remote parquet file on S3 - WASM
+**html code**
 
 ```
-import { readParquet, readParquetStream } from 'parquet-wasm/node';
+<script src="https://cdn.jsdelivr.net/npm/hyparquet/src/hyparquet.min.js"></script>
 
-async function queryParquetRemote(s3Url) {
-  // Custom fetch function that handles range requests
-  const fetchRange = async (start, end) => {
-    const response = await fetch(s3Url, {
-      headers: { 'Range': `bytes=${start}-${end}` }
-    });
-    return new Uint8Array(await response.arrayBuffer());
-  };
-
-  // Read only metadata first (tiny request)
-  const metadata = await readParquet(fetchRange, { useRangeRequests: true });
-  
-  // Now query specific row groups/columns
-  const table = await readParquetStream(fetchRange, {
-    columns: ['col1', 'col2'],  // Only fetch these columns
-    rowGroups: [0, 1],          // Only fetch these row groups
-  });
-  
-  return table;
-}
 ```
 
-#### Download parquet file - javascript 
+
+**javascript code**
+```
+import { parquetRead } from 'hyparquet';
 
 
+await import('https://cdn.jsdelivr.net/npm/hyparquet/src/hyparquet.min.js')
 
+const url = "https://github.com/ianscrivener/drawthings-community-models-extract/raw/refs/heads/main/community-models.parquet";
 
-#### Download parquet file - javascript
+// Read from URL
+const response = await fetch(url);
+const arrayBuffer = await response.arrayBuffer();
+
+await parquetRead({
+  file: arrayBuffer,
+  onComplete: (data) => {
+    console.log(data); // Array of row objects
+  }
+});
+```
 
 
 

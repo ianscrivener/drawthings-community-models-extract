@@ -156,3 +156,4 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 README2.md
 app/ckpt.duckdb
+scratch.txt

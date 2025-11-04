@@ -47,7 +47,35 @@ await parquetRead({
 ---
 
 ### Running the parquet extract locally
-TBD
+
+**Prerequisites:**
+- Node.js 18+ installed
+- Git
+
+**Steps:**
+
+1. Clone this repository and the source data repository:
+```bash
+git clone https://github.com/ianscrivener/drawthings-community-models-extract.git
+cd drawthings-community-models-extract
+git clone https://github.com/drawthingsai/community-models.git
+```
+
+2. Install dependencies:
+```bash
+cd app
+npm install
+```
+
+3. Run the extraction script:
+```bash
+node app.js
+```
+
+The script will:
+- Process metadata from all models, LoRAs, and ControlNets
+- Generate `community-models.parquet` and `community-models.csv` in the root directory
+- Display file sizes and processing statistics
 
 ### Cloning the repo and running the parquet extract using Github Actions
 TBD

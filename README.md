@@ -42,11 +42,12 @@ await parquetRead({
 });
 ```
 
+<br>
 
 
 ---
 
-### Running the parquet extract locally
+## Running the parquet extract locally
 
 **Prerequisites:**
 - Node.js 18+ installed
@@ -77,7 +78,12 @@ The script will:
 - Generate `community-models.parquet` and `community-models.csv` in the root directory
 - Display file sizes and processing statistics
 
-### Automated data extraction using GitHub Actions
+
+<br>
+
+---
+
+## Automated data extraction using GitHub Actions
 
 This repository includes an automated GitHub Actions workflow that keeps the parquet dataset up-to-date with the latest DrawThings community models.
 

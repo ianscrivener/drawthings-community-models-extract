@@ -77,8 +77,34 @@ The script will:
 - Generate `community-models.parquet` and `community-models.csv` in the root directory
 - Display file sizes and processing statistics
 
-### Cloning the repo and running the parquet extract using Github Actions
-TBD
+### Automated data extraction using GitHub Actions
+
+This repository includes an automated GitHub Actions workflow that keeps the parquet dataset up-to-date with the latest DrawThings community models.
+
+**Workflow configuration:**
+- **Location:** `.github/workflows/extract-data.yml`
+- **Schedule:** Runs automatically every 6 hours via cron schedule (`0 */6 * * *`)
+- **Manual trigger:** Can be manually triggered via GitHub's "Actions" tab using the "workflow_dispatch" event
+
+**What the workflow does:**
+
+1. Checks out this repository
+2. Clones the external `drawthingsai/community-models` repository to get the latest model metadata
+3. Sets up Node.js (version 24)
+4. Installs npm dependencies from the `app` directory
+5. Runs the extraction script (`app.js`) to generate fresh parquet and CSV files
+6. Commits and pushes the updated `community-models.parquet` file back to the main branch
+7. Cleans up the cloned repository directory
+
+**To manually trigger the workflow:**
+
+1. Go to the GitHub repository page
+2. Click on the "Actions" tab
+3. Select "Extract Data" workflow from the left sidebar
+4. Click "Run workflow" button
+5. Select the branch (usually `main`) and click "Run workflow"
+
+The automated workflow ensures the parquet dataset stays synchronized with upstream model updates without manual intervention.
 
 
 

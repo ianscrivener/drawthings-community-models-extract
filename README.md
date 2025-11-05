@@ -10,7 +10,7 @@ We also provide some examples how to query the parquet file locally or remotely.
 
 ---
 
-### Code Sample
+## Code Sample
 
 
 **html code**

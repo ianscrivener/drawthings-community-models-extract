@@ -1,7 +1,7 @@
 # DrawThings Community Models Extract
 
 ### Overview
-[**DrawThings**](https://drawthings.ai/) an app that generates AI images and videos locally using Apple M-series processors on Apple Mac computers, iPhones and iPads. It is a free and opensource application available on [**Github**](https://github.com/drawthingsai) and on the [**Apple App Store**](https://apps.apple.com/us/app/draw-things-offline-ai-art/id6444050820). 
+[**DrawThings**](https://drawthings.ai/) is an app that generates AI images and videos locally using Apple M-series processors on Apple Mac computers, iPhones and iPads. It is a free and opensource application available on [**Github**](https://github.com/drawthingsai) and on the [**Apple App Store**](https://apps.apple.com/us/app/draw-things-offline-ai-art/id6444050820). 
 
 This project is node.js code spike to create a single parquet dataset of many of the DrawThings Community Models; main AI models, LoRAs and ControlNets. 
 

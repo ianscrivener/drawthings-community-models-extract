@@ -7,7 +7,6 @@ This project is node.js code spike to create a single parquet dataset of many of
 
 We also provide some examples how to query the parquet file locally or remotely. While the file is under 160 kilobytes and therefore may just be downloaded, it can also be remotely queried if hosted on S3 style object storage.
 
-
 ---
 
 ## Code Sample
